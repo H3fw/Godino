@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bxgdjwxwissct"]
+
+[ext_resource type="Script" uid="uid://b4oug8c81dr1k" path="res://scripts/big_cactus.gd" id="1_yjgdl"]
+[ext_resource type="Texture2D" uid="uid://bc0qto7doqc2o" path="res://sprites/cactus-3.png" id="2_yjgdl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kurfx"]
+size = Vector2(44, 44)
+
+[node name="BigCactus3" type="Area2D" unique_id=1673875158 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_yjgdl")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=221398576]
+texture = ExtResource("2_yjgdl")
+centered = false
+offset = Vector2(0, -47)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1125592760]
+position = Vector2(26, -22)
+shape = SubResource("RectangleShape2D_kurfx")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

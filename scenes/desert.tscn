@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bc3fhv2o3v83c"]
+
+[ext_resource type="PackedScene" uid="uid://bjl5go0aa7p5y" path="res://scenes/dino.tscn" id="1_21w8a"]
+[ext_resource type="Script" uid="uid://c8s0jbmmonp2d" path="res://scripts/desert.gd" id="1_rjswm"]
+[ext_resource type="Texture2D" uid="uid://dwdy8ih81ykjw" path="res://sprites/background.png" id="2_8ioeg"]
+[ext_resource type="Script" uid="uid://djkut3n1jx2ed" path="res://scripts/spawner.gd" id="4_4tv1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ioeg"]
+size = Vector2(1200, 20)
+
+[node name="Desert" type="Node2D" unique_id=683696804 node_paths=PackedStringArray("ground")]
+script = ExtResource("1_rjswm")
+ground = NodePath("StaticBody2D/Parallax2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=66897073]
+position = Vector2(588, 438)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=584076511]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_8ioeg")
+metadata/_edit_lock_ = true
+
+[node name="Parallax2D" type="Parallax2D" parent="StaticBody2D" unique_id=832221097]
+repeat_size = Vector2(1200, 0)
+ignore_camera_scroll = true
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/Parallax2D" unique_id=607727672]
+texture = ExtResource("2_8ioeg")
+
+[node name="Spawner" type="Node2D" parent="." unique_id=1876773839]
+position = Vector2(1407, 435)
+script = ExtResource("4_4tv1n")
+
+[node name="Timer" type="Timer" parent="Spawner" unique_id=1418606390]
+autostart = true
+
+[node name="Dino" parent="." unique_id=269358328 instance=ExtResource("1_21w8a")]
+position = Vector2(160, 429)
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bbjws8q0aran5"]
+
+[ext_resource type="PackedScene" uid="uid://goed6t7nrfh7" path="res://scenes/big_cactus.tscn" id="1_ufwal"]
+
+[node name="BigCactus2" type="Node2D" unique_id=2088602989]
+
+[node name="BigCactus" parent="." unique_id=551088004 instance=ExtResource("1_ufwal")]
+
+[node name="BigCactus2" parent="." unique_id=1153392737 instance=ExtResource("1_ufwal")]
+position = Vector2(25, 0)

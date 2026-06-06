@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bo8r5wd20cul7"]
+
+[ext_resource type="Script" uid="uid://cwpxm5frosc48" path="res://scripts/small_cactus.gd" id="1_x00eo"]
+[ext_resource type="Texture2D" uid="uid://dsjtal5hfvawo" path="res://sprites/cactus-s.png" id="2_yil2h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jug67"]
+resource_local_to_scene = true
+atlas = ExtResource("2_yil2h")
+region = Rect2(0, 0, 17, 35)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bneui"]
+radius = 7.0
+height = 32.0
+
+[node name="SmallCactus" type="Area2D" unique_id=749574270 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_x00eo")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=221398576]
+texture = SubResource("AtlasTexture_jug67")
+centered = false
+offset = Vector2(0, -34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1125592760]
+position = Vector2(8.5, -16)
+shape = SubResource("CapsuleShape2D_bneui")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

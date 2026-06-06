@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bjl5go0aa7p5y"]
+
+[ext_resource type="Texture2D" uid="uid://dtbrnff2if14u" path="res://sprites/dino.png" id="1_eduse"]
+[ext_resource type="Script" uid="uid://c1v1lmtfpi3qo" path="res://scripts/dino.gd" id="1_sursh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sursh"]
+size = Vector2(40, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
+size = Vector2(18, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4s6ie"]
+size = Vector2(20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdobs"]
+atlas = ExtResource("1_eduse")
+region = Rect2(0, 47, 61, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o18ws"]
+atlas = ExtResource("1_eduse")
+region = Rect2(0, 188, 61, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwkj2"]
+atlas = ExtResource("1_eduse")
+region = Rect2(0, 235, 61, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op3ao"]
+atlas = ExtResource("1_eduse")
+region = Rect2(0, 0, 61, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yid52"]
+atlas = ExtResource("1_eduse")
+region = Rect2(0, 94, 61, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wytem"]
+atlas = ExtResource("1_eduse")
+region = Rect2(0, 141, 61, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3sfes"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdobs")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o18ws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwkj2")
+}],
+"loop": true,
+"name": &"duck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op3ao")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yid52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wytem")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Dino" type="CharacterBody2D" unique_id=269358328]
+script = ExtResource("1_sursh")
+
+[node name="UpperCollision" type="CollisionShape2D" parent="." unique_id=1795206621]
+position = Vector2(22, -33)
+shape = SubResource("RectangleShape2D_sursh")
+
+[node name="LowerCollision" type="CollisionShape2D" parent="." unique_id=145593214]
+position = Vector2(19, -10.5)
+shape = SubResource("RectangleShape2D_sh265")
+
+[node name="DuckHead" type="CollisionShape2D" parent="." unique_id=2046567985]
+position = Vector2(49, -19.5)
+shape = SubResource("RectangleShape2D_4s6ie")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2096448068]
+sprite_frames = SubResource("SpriteFrames_3sfes")
+animation = &"dead"
+centered = false
+offset = Vector2(0, -47)
